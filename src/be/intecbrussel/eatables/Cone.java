@@ -9,7 +9,7 @@ public class Cone implements Eatable {
     public Cone() {
     }
 
-    public Cone(Flavor[] balls) {
+    public Cone(Flavor... balls) {
         this.balls = balls;
     }
 
