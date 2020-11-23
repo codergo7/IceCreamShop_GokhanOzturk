@@ -16,7 +16,7 @@ public class Magnum implements Eatable {
         System.out.println("You eat " + this.magnumType + " Magnum ice cream");
     }
 
-    public MagnumType getMagnumType() {
+    public MagnumType getType() {
         return magnumType;
     }
 
@@ -25,7 +25,7 @@ public class Magnum implements Eatable {
         MILKCHOCOLATE(1.1),
         WHITECHOCOLATE(1.2),
         BLACKCHOCOLATE(1.15),
-        ALPINENUTS(0.9),
+        ALPINENUTS(1.3),
         ROMANTICSRAWBERRIES(1.05);
 
         private double priceMultiplierByMagnumStandardPrice;

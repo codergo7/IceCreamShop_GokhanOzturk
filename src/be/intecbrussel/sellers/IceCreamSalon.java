@@ -9,6 +9,13 @@ public class IceCreamSalon implements IceCreamSeller {
     private PriceList priceList;
     private double totalProfit;
 
+    public IceCreamSalon() {
+    }
+
+    public IceCreamSalon(PriceList priceList) {
+        this.priceList = priceList;
+    }
+
     @Override
     public Cone orderCone(Cone.Flavor[] balls) {
         return null;

@@ -1,6 +1,5 @@
 package be.intecbrussel.sellers;
 
-import be.intecbrussel.application.Stock;
 import be.intecbrussel.eatables.Cone;
 import be.intecbrussel.eatables.IceRocket;
 import be.intecbrussel.eatables.Magnum;
@@ -8,12 +7,20 @@ import be.intecbrussel.eatables.Magnum;
 public class IceCreamCar implements IceCreamSeller {
 
     private PriceList priceList;
-
-    // ???? package
     private Stock stock;
-
     private double profit;
 
+    public IceCreamCar() {
+    }
+
+    public IceCreamCar(PriceList priceList) {
+        this.priceList = priceList;
+    }
+
+    public IceCreamCar(PriceList priceList, Stock stock) {
+        this.priceList = priceList;
+        this.stock = stock;
+    }
 
     @Override
     public Cone orderCone(Cone.Flavor[] balls) {
