@@ -23,8 +23,18 @@ public class Magnum implements Eatable {
 
     public enum MagnumType{
 
-        MILKCHOCOLATE, WHITECHOCOLATE, BLACKCHOCOLATE,
-        ALPINENUTS, ROMANTICSRAWBERRIES;
+        MILKCHOCOLATE(1.1), WHITECHOCOLATE(1.2),
+        BLACKCHOCOLATE(1.15), ALPINENUTS(0.9),
+        ROMANTICSRAWBERRIES(1.05);
 
+        private double priceMultiplierByMagnumStandardPrice;
+
+        MagnumType(double priceMultiplierByStandard) {
+            this.priceMultiplierByMagnumStandardPrice = priceMultiplierByStandard;
+        }
+
+        public double getPriceMultiplierByMagnumStandardPrice() {
+            return priceMultiplierByMagnumStandardPrice;
+        }
     }
 }
