@@ -11,7 +11,6 @@ public class Magnum implements Eatable {
         this.magnumType =magnumType;
     }
 
-
     @Override
     public void eat() {
 
