@@ -24,22 +24,39 @@ public class IceCreamCar implements IceCreamSeller {
 
     @Override
     public Cone orderCone(Cone.Flavor... balls) {
-        if(balls!=null && priceList!=null){
+        if(stock.getCones()>0 && stock.getBalls()>balls.length){
             profit += balls.length * priceList.getBallPrice();
+            return prepareCone(balls);
         }
-        return prepareCone(balls);
+        else {
+            System.out.println("Unfortunately we don't have enough Cone or balls.");
+            return null;
+        }
     }
 
     @Override
     public IceRocket orderIceRocket() {
-        profit += priceList.getRocketPrice();
-        return prepareRocket();
+        if(stock.getIceRockets()>0){
+            profit += priceList.getRocketPrice();
+            return prepareRocket();
+        }
+        else {
+            System.out.println("Unfortunately we don't have enough Ice Rocket.");
+            return null;
+        }
+
     }
 
     @Override
     public Magnum orderMagnum(Magnum.MagnumType magnumType) {
-        profit += priceList.getMagnumPrice(magnumType);
-        return prepareMagnum(magnumType);
+        if(stock.getMagni()>0){
+            profit += priceList.getMagnumPrice(magnumType);
+            return prepareMagnum(magnumType);
+        }
+        else {
+            System.out.println("Unfortunately we don't have enough Magnum.");
+            return null;
+        }
     }
 
     @Override
