@@ -14,7 +14,9 @@ public class IceCreamApp {
 
         System.out.println("****************** SALON ******************");
         PriceList priceList = new PriceList(1.25, 1.5, 2);
-        IceCreamSeller iceCreamSalon = new IceCreamSalon(priceList);
+
+        IceCreamSalon iceCreamSalon = new IceCreamSalon(priceList);
+
         Eatable[] orders =
                 {iceCreamSalon.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
                 iceCreamSalon.orderMagnum(Magnum.MagnumType.ALPINENUTS),
@@ -31,7 +33,7 @@ public class IceCreamApp {
         Stock stock = new Stock(20,20,20,20);
 
 
-        IceCreamSeller iceCreamCar = new IceCreamCar(priceListCar,stock);
+        IceCreamCar iceCreamCar = new IceCreamCar(priceListCar,stock);
 
         Eatable[] orders2 =
                 {iceCreamCar.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),

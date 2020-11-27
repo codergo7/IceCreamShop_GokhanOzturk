@@ -4,20 +4,20 @@ import be.intecbrussel.eatables.Cone;
 import be.intecbrussel.eatables.IceRocket;
 import be.intecbrussel.eatables.Magnum;
 
-public class IceCreamCar_V2 implements IceCreamSeller {
+public class IceCreamCarV2 implements IceCreamSeller {
 
     private PriceList priceList;
     private Stock stock;
     private double profit;
 
-    public IceCreamCar_V2() {
+    public IceCreamCarV2() {
     }
 
-    public IceCreamCar_V2(PriceList priceList) {
+    public IceCreamCarV2(PriceList priceList) {
         this.priceList = priceList;
     }
 
-    public IceCreamCar_V2(PriceList priceList, Stock stock) {
+    public IceCreamCarV2(PriceList priceList, Stock stock) {
         this.priceList = priceList;
         this.stock = stock;
     }
