@@ -24,36 +24,48 @@ public class IceCreamCar implements IceCreamSeller {
 
     @Override
     public Cone orderCone(Cone.Flavor... balls) {
-        if(stock.getCones()>0 && stock.getBalls()>balls.length){
+        return prepareCone(balls);
+    }
+
+    @Override
+    public IceRocket orderIceRocket() {
+        return prepareRocket();
+    }
+
+    @Override
+    public Magnum orderMagnum(Magnum.MagnumType magnumType) {
+        return prepareMagnum(magnumType);
+    }
+
+    private Cone prepareCone(Cone.Flavor[] balls) {
+        if (stock.getCones() > 0 && stock.getBalls() > balls.length) {
             profit += balls.length * priceList.getBallPrice();
-            return prepareCone(balls);
-        }
-        else {
+            stock.setCones(stock.getCones() - 1);
+            stock.setBalls(stock.getBalls() - balls.length);
+            return new Cone(balls);
+        } else {
             System.out.println("No more Cone or balls in the stock");
             return null;
         }
     }
 
-    @Override
-    public IceRocket orderIceRocket() {
-        if(stock.getIceRockets()>0){
+    private IceRocket prepareRocket() {
+        if (stock.getIceRockets() > 0) {
             profit += priceList.getRocketPrice();
-            return prepareRocket();
-        }
-        else {
+            stock.setIceRockets(stock.getIceRockets() - 1);
+            return new IceRocket();
+        } else {
             System.out.println("No more Ice Rocket in the stock.");
             return null;
         }
-
     }
 
-    @Override
-    public Magnum orderMagnum(Magnum.MagnumType magnumType) {
-        if(stock.getMagni()>0){
+    private Magnum prepareMagnum(Magnum.MagnumType magnumType) {
+        if (stock.getMagni() > 0) {
             profit += priceList.getMagnumPrice(magnumType);
-            return prepareMagnum(magnumType);
-        }
-        else {
+            stock.setMagni(stock.getMagni() - 1);
+            return new Magnum(magnumType);
+        } else {
             System.out.println("No more Magnum in the stock");
             return null;
         }
@@ -62,21 +74,5 @@ public class IceCreamCar implements IceCreamSeller {
     @Override
     public double getProfit() {
         return this.profit;
-    }
-
-    private IceRocket prepareRocket(){
-        stock.setIceRockets(stock.getIceRockets()-1);
-        return new IceRocket();
-    }
-
-    private Magnum prepareMagnum(Magnum.MagnumType magnumType){
-        stock.setMagni(stock.getMagni()-1);
-        return new Magnum(magnumType);
-    }
-
-    private Cone prepareCone(Cone.Flavor[] balls){
-        stock.setCones(stock.getCones()-1);
-        stock.setBalls(stock.getBalls()-balls.length);
-        return new Cone(balls);
     }
 }
