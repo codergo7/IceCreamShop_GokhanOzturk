@@ -15,7 +15,7 @@ public class IceCreamApp {
         // Testing for IceCreamCar
         PriceList priceListCar = new PriceList(1, 1.3, 2);
         Stock stock = new Stock(10,3,10,10);
-        IceCreamCar iceCreamCar = new IceCreamCar(priceListCar,stock);
+        IceCreamSeller iceCreamCar = new IceCreamCar(priceListCar,stock);
         testIceCreamSeller(iceCreamCar);
 
     }

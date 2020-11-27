@@ -11,7 +11,7 @@ public class IceCreamAppV2 {
 
         PriceList priceListCar = new PriceList(1, 1.3, 2);
         Stock stock = new Stock(3, 3, 10, 3);
-        IceCreamSeller iceCreamSeller = new IceCreamCarV2(priceListCar, stock);
+        IceCreamSeller iceCreamSeller = new IceCreamCar(priceListCar, stock);
         Eatable[] orders = new Eatable[20];
 
         System.out.println("\n****************** CAR V2 ******************\n");
