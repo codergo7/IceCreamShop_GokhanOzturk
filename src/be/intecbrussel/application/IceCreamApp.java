@@ -1,58 +1,61 @@
 package be.intecbrussel.application;
 
-import be.intecbrussel.eatables.Cone;
-import be.intecbrussel.eatables.Eatable;
-import be.intecbrussel.eatables.IceRocket;
-import be.intecbrussel.eatables.Magnum;
+import be.intecbrussel.eatables.*;
 import be.intecbrussel.sellers.*;
 
 public class IceCreamApp {
 
     public static void main(String[] args) {
 
-
-
-        System.out.println("****************** SALON ******************");
+        // Testing for IceCreamSalon
         PriceList priceList = new PriceList(1.25, 1.5, 2);
-
         IceCreamSalon iceCreamSalon = new IceCreamSalon(priceList);
+        testIceCreamSeller(iceCreamSalon);
 
-        Eatable[] orders =
-                {iceCreamSalon.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
-                iceCreamSalon.orderMagnum(Magnum.MagnumType.ALPINENUTS),
-                iceCreamSalon.orderMagnum(Magnum.MagnumType.MILKCHOCOLATE), iceCreamSalon.orderIceRocket()};
-
-        printEat(orders);
-        System.out.println("Profit of the Salon: "+ iceCreamSalon.getProfit() + " euros");
-
-
-        System.out.println("\n\n****************** CAR ******************\n");
-
+        // Testing for IceCreamCar
         PriceList priceListCar = new PriceList(1, 1.3, 2);
-
-        Stock stock = new Stock(20,20,20,20);
-
-
+        Stock stock = new Stock(10,3,10,10);
         IceCreamCar iceCreamCar = new IceCreamCar(priceListCar,stock);
+        testIceCreamSeller(iceCreamCar);
 
-        Eatable[] orders2 =
-                {iceCreamCar.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
-                        iceCreamCar.orderMagnum(Magnum.MagnumType.ALPINENUTS),
-                        iceCreamCar.orderMagnum(Magnum.MagnumType.ROMANTICSRAWBERRIES), iceCreamCar.orderIceRocket()};
+    }
+    public static void testIceCreamSeller(IceCreamSeller iceCreamSeller){
+        Eatable[] orders = new Eatable[]{};
+        try {
+            Eatable[] orders2 =
+                    {iceCreamSeller.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
+                            iceCreamSeller.orderMagnum(Magnum.MagnumType.ALPINENUTS),
+                            iceCreamSeller.orderMagnum(Magnum.MagnumType.MILKCHOCOLATE), iceCreamSeller.orderIceRocket()};
+            orders =orders2;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
-        printEat(orders2);
-
-        System.out.println("Profit of the Car: " +iceCreamCar.getProfit() + " euros");
-        System.out.println("Amount of the balls in the stock: " + stock.getBalls());
-        System.out.println("Amount of the cones in the stock: " +stock.getCones());
-        System.out.println("Amount of the Ice rockets in the stock: " +stock.getIceRockets());
-        System.out.println("Amount of the Magnums in the stock: " +stock.getMagni());
+        if(iceCreamSeller instanceof IceCreamCar){
+            IceCreamCar iceCreamCar = (IceCreamCar) iceCreamSeller;
+            System.out.println("\n\n****************** CAR ******************");
+            printEatAndProfit(orders,iceCreamCar);
+            statementOfIceCreamCar(iceCreamCar);
+        } else {
+            System.out.println("***************** SALON *****************");
+            printEatAndProfit(orders,iceCreamSeller);
+        }
     }
 
-    public static void printEat(Eatable[] orders){
+    public static void printEatAndProfit(Eatable[] orders, IceCreamSeller iceCreamSeller){
         for (Eatable eatable : orders){
             eatable.eat();
         }
 
+        System.out.println("Profit : "+ iceCreamSeller.getProfit() + " euros");
+    }
+
+    public static void statementOfIceCreamCar(IceCreamCar iceCreamCar){
+        System.out.println("\n\n****** Current Statement of the Car ******");
+        System.out.println("Profit of the Car: " + iceCreamCar.getProfit() + " euros");
+        System.out.println("Amount of the balls in the stock: " + iceCreamCar.getStock().getBalls());
+        System.out.println("Amount of the cones in the stock: " +iceCreamCar.getStock().getCones());
+        System.out.println("Amount of the Ice rockets in the stock: " +iceCreamCar.getStock().getIceRockets());
+        System.out.println("Amount of the Magnums in the stock: " +iceCreamCar.getStock().getMagni());
     }
 }

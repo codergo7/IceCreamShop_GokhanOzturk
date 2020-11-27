@@ -75,4 +75,8 @@ public class IceCreamCar implements IceCreamSeller {
     public double getProfit() {
         return this.profit;
     }
+
+    public Stock getStock() {
+        return stock;
+    }
 }
