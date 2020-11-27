@@ -21,7 +21,5 @@ public class Cone implements Eatable {
     public enum Flavor{
         STRAWBERRY, BANANA, CHOCOLATE, VANILLA,
         LEMON, STRACIATELLA, MOKKA, PISTACHE;
-
-
     }
 }
