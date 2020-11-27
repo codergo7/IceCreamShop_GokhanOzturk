@@ -29,7 +29,7 @@ public class IceCreamCar implements IceCreamSeller {
             return prepareCone(balls);
         }
         else {
-            System.out.println("Unfortunately we don't have enough Cone or balls.");
+            System.out.println("One or both Cones and balls are not in stock");
             return null;
         }
     }
@@ -41,7 +41,7 @@ public class IceCreamCar implements IceCreamSeller {
             return prepareRocket();
         }
         else {
-            System.out.println("Unfortunately we don't have enough Ice Rocket.");
+            System.out.println("We don't have Ice Rocket in our stock.");
             return null;
         }
 
@@ -54,7 +54,7 @@ public class IceCreamCar implements IceCreamSeller {
             return prepareMagnum(magnumType);
         }
         else {
-            System.out.println("Unfortunately we don't have enough Magnum.");
+            System.out.println("We don't have Magnum in our stock");
             return null;
         }
     }
