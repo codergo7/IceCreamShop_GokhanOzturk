@@ -9,59 +9,51 @@ public class IceCreamAppV2 {
 
     public static void main(String[] args) {
 
-
-/*
-        System.out.println("****************** SALON ******************");
-
-        PriceList priceList = new PriceList(1.25, 1.5, 2);
-
-        IceCreamSalon iceCreamSalon = new IceCreamSalon(priceList);
-        Eatable[] orders =
-                {iceCreamSalon.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
-                iceCreamSalon.orderMagnum(Magnum.MagnumType.WHITECHOCOLATE),iceCreamSalon.orderMagnum(Magnum.MagnumType.ALPINENUTS),
-                iceCreamSalon.orderMagnum(Magnum.MagnumType.BLACKCHOCOLATE), iceCreamSalon.orderMagnum(Magnum.MagnumType.ALPINENUTS),
-                iceCreamSalon.orderMagnum(Magnum.MagnumType.MILKCHOCOLATE), iceCreamSalon.orderIceRocket()};
-
-        printEat(orders);
-        System.out.println("Profit of the Salon: "+ iceCreamSalon.getProfit() + " euros");
-
-
-
- */
-        System.out.println("\n\n****************** CAR ******************\n");
+   System.out.println("\n****************** CAR V2 ******************\n");
 
         PriceList priceListCar = new PriceList(1, 1.3, 2);
+        Stock stock = new Stock(3,3,10,3);
+        IceCreamSeller iceCreamSeller = new IceCreamCarV2(priceListCar,stock);
+        Eatable[] orders = new Eatable[20];
 
-        Stock stock = new Stock(2,25,25,3);
-
-
-        IceCreamCarV2 iceCreamCar = new IceCreamCarV2(priceListCar,stock);
-
-
+        // Cano test: There is 3 cones and 10 balls in the stock, but it is ordered 5 cones and 15 balls
         try {
-            Eatable[] orders2 =
-                    {iceCreamCar.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
-                            iceCreamCar.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
-                            iceCreamCar.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
-                            iceCreamCar.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
-                            iceCreamCar.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}),
-                            iceCreamCar.orderMagnum(Magnum.MagnumType.WHITECHOCOLATE),
-                            iceCreamCar.orderMagnum(Magnum.MagnumType.ALPINENUTS),
-                            iceCreamCar.orderMagnum(Magnum.MagnumType.BLACKCHOCOLATE),
-                            iceCreamCar.orderMagnum(Magnum.MagnumType.ALPINENUTS),
-                            iceCreamCar.orderMagnum(Magnum.MagnumType.MILKCHOCOLATE),
-                            iceCreamCar.orderIceRocket(), iceCreamCar.orderIceRocket(),
-                            iceCreamCar.orderIceRocket(), iceCreamCar.orderIceRocket()};
-
-            printEat(orders2);
-        }catch (NoMoreIceCreamException nmie){
-            System.out.println(nmie.getMessage());
+            addAnEatableToArray(orders,iceCreamSeller.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}));
+            addAnEatableToArray(orders,iceCreamSeller.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}));
+            addAnEatableToArray(orders,iceCreamSeller.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}));
+            addAnEatableToArray(orders,iceCreamSeller.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}));
+            addAnEatableToArray(orders,iceCreamSeller.orderCone( new Cone.Flavor[]{Cone.Flavor.BANANA, Cone.Flavor.CHOCOLATE, Cone.Flavor.MOKKA}));
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
+        // IceRocket test: There is 3 Ice Rockets in the stock, but it is ordered 4
+        try {
+            addAnEatableToArray(orders,iceCreamSeller.orderIceRocket());
+            addAnEatableToArray(orders,iceCreamSeller.orderIceRocket());
+            addAnEatableToArray(orders,iceCreamSeller.orderIceRocket());
+            addAnEatableToArray(orders,iceCreamSeller.orderIceRocket());
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
 
+        // Magnum test: There is 3 Magnum in the stock, but it is ordered 4
+        try {
+            addAnEatableToArray(orders,iceCreamSeller.orderMagnum(Magnum.MagnumType.MILKCHOCOLATE));
+            addAnEatableToArray(orders,iceCreamSeller.orderMagnum(Magnum.MagnumType.ALPINENUTS));
+            addAnEatableToArray(orders,iceCreamSeller.orderMagnum(Magnum.MagnumType.WHITECHOCOLATE));
+            addAnEatableToArray(orders,iceCreamSeller.orderMagnum(Magnum.MagnumType.BLACKCHOCOLATE));
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
 
-
-        System.out.println("Profit of the Car: " +iceCreamCar.getProfit() + " euros");
+        System.out.println("\nProfit of the Car: " +iceCreamSeller.getProfit() + " euros");
         System.out.println("Amount of the balls in the stock: " + stock.getBalls());
         System.out.println("Amount of the cones in the stock: " +stock.getCones());
         System.out.println("Amount of the Ice rockets in the stock: " +stock.getIceRockets());
@@ -72,6 +64,14 @@ public class IceCreamAppV2 {
         for (Eatable eatable : orders){
             eatable.eat();
         }
+    }
 
+    public static void addAnEatableToArray(Eatable[] eatables, Eatable eatable){
+        for (int i = 0; i <eatables.length; i++) {
+            if(eatables[i]==null){
+                eatables[i]=eatable;
+                return;
+            }
+        }
     }
 }
