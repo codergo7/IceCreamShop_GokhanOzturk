@@ -34,7 +34,7 @@ public class PriceList {
     }
 
     public double getMagnumPrice(Magnum.MagnumType magnumType) {
-        return magnumStandardPrice * (magnumType == null ? 1 : magnumType.getPriceMultiplierByMagnumStandardPrice()) ;
+        return magnumStandardPrice * (magnumType == null ? 1 : magnumType.getPriceMultiplierByMagnumType()) ;
     }
 
     public void setMagnumStandardPrice(double magnumStandardPrice) {

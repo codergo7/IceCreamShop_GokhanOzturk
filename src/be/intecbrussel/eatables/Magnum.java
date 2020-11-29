@@ -28,14 +28,14 @@ public class Magnum implements Eatable {
         ALPINENUTS(1.3),
         ROMANTICSRAWBERRIES(1.05);
 
-        private double priceMultiplierByMagnumStandardPrice;
+        private double priceMultiplierByMagnumType;
 
         MagnumType(double priceMultiplierByStandard) {
-            this.priceMultiplierByMagnumStandardPrice = priceMultiplierByStandard;
+            this.priceMultiplierByMagnumType = priceMultiplierByStandard;
         }
 
-        public double getPriceMultiplierByMagnumStandardPrice() {
-            return priceMultiplierByMagnumStandardPrice;
+        public double getPriceMultiplierByMagnumType() {
+            return priceMultiplierByMagnumType;
         }
     }
 }
