@@ -59,7 +59,7 @@ public class IceCreamCar implements IceCreamSeller {
 
     private Cone prepareCone(Cone.Flavor[] balls) throws NoMoreIceCreamException {
         if (stock.getCones() > 0 && stock.getBalls() > 0) {
-            if (stock.getBalls() > balls.length) {
+            if (stock.getBalls() >= balls.length) {
                 profit += balls.length * priceList.getBallPrice();
                 stock.setBalls(stock.getBalls() - balls.length);
             }

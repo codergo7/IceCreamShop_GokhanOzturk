@@ -14,10 +14,13 @@ public class IceCreamAppV2 {
         IceCreamSeller iceCreamSeller = new IceCreamCar(priceListCar, stock);
         Eatable[] orders = new Eatable[20];
 
-        System.out.println("\n****************** CAR V2 ******************\n");
+        System.out.println("\n****************** CAR ******************");
         testingCano(orders, iceCreamSeller);
         testingIceRocket(orders, iceCreamSeller);
         testingMagnum(orders, iceCreamSeller);
+
+        //After orders
+        statementOfIceCreamCar((IceCreamCar) iceCreamSeller);
     }
 
     // Cano test: There is 3 cones and 10 balls in the stock, but it is ordered 5 cones and 15 balls
@@ -73,6 +76,15 @@ public class IceCreamAppV2 {
                 return;
             }
         }
+    }
+
+    public static void statementOfIceCreamCar(IceCreamCar iceCreamCar){
+        System.out.println("\n****** Current Statement of the Car ******");
+        System.out.println("Profit of the Car: " + iceCreamCar.getProfit() + " euros");
+        System.out.println("Amount of the balls in the stock: " + iceCreamCar.getStock().getBalls());
+        System.out.println("Amount of the cones in the stock: " +iceCreamCar.getStock().getCones());
+        System.out.println("Amount of the Ice rockets in the stock: " +iceCreamCar.getStock().getIceRockets());
+        System.out.println("Amount of the Magnums in the stock: " +iceCreamCar.getStock().getMagni());
     }
 
 }
