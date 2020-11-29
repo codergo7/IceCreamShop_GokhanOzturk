@@ -19,7 +19,7 @@ public class IceCreamAppV2 {
         testingIceRocket(orders, iceCreamSeller);
         testingMagnum(orders, iceCreamSeller);
 
-        //After orders
+        //After selling
         statementOfIceCreamCar((IceCreamCar) iceCreamSeller);
     }
 
@@ -78,13 +78,13 @@ public class IceCreamAppV2 {
         }
     }
 
-    public static void statementOfIceCreamCar(IceCreamCar iceCreamCar){
+    public static void statementOfIceCreamCar(IceCreamCar iceCreamCar) {
         System.out.println("\n****** Current Statement of the Car ******");
         System.out.println("Profit of the Car: " + iceCreamCar.getProfit() + " euros");
         System.out.println("Amount of the balls in the stock: " + iceCreamCar.getStock().getBalls());
-        System.out.println("Amount of the cones in the stock: " +iceCreamCar.getStock().getCones());
-        System.out.println("Amount of the Ice rockets in the stock: " +iceCreamCar.getStock().getIceRockets());
-        System.out.println("Amount of the Magnums in the stock: " +iceCreamCar.getStock().getMagni());
+        System.out.println("Amount of the cones in the stock: " + iceCreamCar.getStock().getCones());
+        System.out.println("Amount of the Ice rockets in the stock: " + iceCreamCar.getStock().getIceRockets());
+        System.out.println("Amount of the Magnums in the stock: " + iceCreamCar.getStock().getMagni());
     }
 
 }

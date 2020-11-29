@@ -63,7 +63,7 @@ public class IceCreamCar implements IceCreamSeller {
                 profit += balls.length * priceList.getBallPrice();
                 stock.setBalls(stock.getBalls() - balls.length);
             }
-            // if the balls ordered are greater than in stock
+            // If the balls ordered are greater than in stock. The customer shouldn't go back empty-handed.
             else {
                 profit += stock.getBalls() * priceList.getBallPrice();
                 stock.setBalls(0);
